@@ -1,0 +1,73 @@
+Import-Module ActiveDirectory
+$Tab = [char]9
+cls
+'='*50
+" "*20 + "Username"
+'='*50
+$username = Read-Host -prompt 'Please enter the new users username (E.G. Joe.Bloggs)'
+cls
+'='*50
+" "*20 + "Display Name"
+'='*50
+""
+"Username: " + $username
+""
+$DisplayName = Read-Host -Prompt 'Please enter their Display Name'
+cls
+'='*50
+" "*20 + "Given Forname"
+'='*50
+""
+"Username: " + $username
+"Display Name: " + $displayname
+""
+$GForname = Read-Host -Prompt 'Please enter their Given Forname'
+cls
+'='*50
+" "*20 + "Surname"
+'='*50
+"Username: " + $username
+"Display Name: " + $displayname
+"Given Forname: " + $gforname
+""
+$Surname = Read-Host -Prompt 'Please enter their surname'
+
+cls
+
+'='*50
+'='*50
+Write-Host 'Username: ' $tab $tab $username
+Write-Host 'DisplayName: ' $tab $DisplayName
+Write-Host 'Forname: '$tab $tab $GForname
+Write-Host 'Surname: ' $tab $tab $Surname
+'='*50
+'='*50
+
+$Email = $username +"@domain.co.uk"
+$name = $GForname + " " + $Surname
+$password = "asjduasdsad451!AA"
+$Office = "Office"
+$ADGroup = "AdGroupName"
+
+pause
+
+New-ADUser -name $name -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -DisplayName $DisplayName -SamAccountName $username -Office $Office -UserPrincipalName $email -GivenName $GForname -Surname $Surname -Enabled $true -ChangePasswordAtLogon $true -PasswordNeverExpires $false -EmailAddress $email
+Add-ADGroupMember -Identity $ADGroup -Members $username
+
+
+cls
+
+'='*50
+'='*50
+' '*3 + "The following user was created sucessfully"
+'='*50
+'='*50
+Write-Host 'Username: ' $tab $tab $username
+Write-Host 'DisplayName: ' $tab $DisplayName
+Write-Host 'Forname: '$tab $tab $GForname
+Write-Host 'Surname: ' $tab $tab $Surname
+'='*50
+'='*50
+
+
+
