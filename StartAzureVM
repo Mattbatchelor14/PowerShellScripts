@@ -1,0 +1,11 @@
+##Example use with all of the available methods
+
+##Start-AzureVM
+##   [-ServiceName] <String>
+##   [-Name] <String[]>
+##   [-InformationAction <ActionPreference>]
+##   [-InformationVariable <String>]
+##   [-Profile <AzureSMProfile>]
+##   [<CommonParameters>]
+
+Start-AzureVM -ServiceName "ContosoService03" -Name "VirtualMachine04"
